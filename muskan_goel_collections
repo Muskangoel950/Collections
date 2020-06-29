@@ -1,0 +1,201 @@
+# Default ignored files
+/workspace.xml 
+ 13  .idea/compiler.xml 
+@@ -0,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="assignment6" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project> 
+ 6  .idea/encodings.xml 
+@@ -0,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+  </component>
+</project> 
+ 14  .idea/misc.xml 
+@@ -0,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project> 
+ 6  .idea/vcs.xml 
+@@ -0,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+  </component>
+</project> 
+ 2  assignment6.iml 
+@@ -0,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4" /> 
+ 75  pom.xml 
+@@ -0,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.example</groupId>
+  <artifactId>assignment6</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>assignment6</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.7.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
+ 69  src/main/java/List.java 
+@@ -0,0 +1,69 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class DemoList
+{
+    ArrayList<Integer> ar=new ArrayList<Integer>();
+    void add(int element)
+    {
+        ar.add(element);
+    }
+    int get(int position)
+    {
+        return ar.get(position);
+    }
+    int position(int element)
+    {
+        return ar.indexOf(element);
+    }
+    void remove(int position)
+    {
+        ar.remove(ar.get(position));
+    }
+    void removelast()
+    {
+        ar.remove(ar.get(ar.size()-1));
+    }
+    void print()
+    {
+        System.out.print(ar);
+        System.out.println();
+    }
+}
+public class List
+{
+    public static void main(String args[])
+    {
+        DemoList demoList=new DemoList();
+        Scanner s=new Scanner(System.in);
+        int ch;
+        while (s.hasNext())
+        {
+            ch=s.nextInt();
+            if(ch==1)
+            {
+                demoList.add(s.nextInt());
+            }
+            else if(ch==2)
+            {
+                System.out.println("Element is:"+demoList.get(s.nextInt()));
+            }
+            else if(ch==3)
+            {
+                System.out.println("Position is:"+demoList.position(s.nextInt()));
+            }
+            else if(ch==4)
+            {
+                demoList.remove(s.nextInt());
+            }
+            else if(ch==5)
+            {
+                demoList.removelast();
+            }
+            else
+            {
+                demoList.print();
+            }
+        }
+    }
+}
